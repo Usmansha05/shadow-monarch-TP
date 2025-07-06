@@ -1,4 +1,44 @@
 <!DOCTYPE html>
+<!--
+    Shadow Monarch's Training System
+    ================================
+    
+    A Solo Leveling inspired fitness tracking application with RPG elements.
+    
+    Features:
+    - User registration and profile management
+    - Daily quests with XP and leveling system
+    - Shadow powers progression (Extraction, Speed, Domain, Authority)
+    - Exercise library with custom exercises
+    - Mission/todo list system
+    - Real-time clock and date tracking
+    - Background video with audio controls
+    - Responsive design with modern UI
+    
+    Technical Details:
+    - Pure HTML/CSS/JavaScript (no frameworks)
+    - localStorage for data persistence
+    - JSON format for all data storage
+    - Comprehensive error handling and data validation
+    - Auto-backup system every 5 minutes
+    - Data recovery and repair mechanisms
+    
+    Author: Shariff Usman
+    Version: 1.0.0
+    License: MIT
+    
+    File Structure:
+    - index.html (main application)
+    - bgv.mp4 (background video)
+    - 1.jpg to 6.jpg (background images)
+    - slbgm.mp4 (background music)
+    - solo-leveling-statue-of-god-grin-smile-2k-wallpaper-uhdpaper.com-150@5@d.jpg (fallback image)
+    
+    Browser Compatibility:
+    - Modern browsers with localStorage support
+    - Video autoplay may require user interaction
+    - File upload support for custom avatars and backgrounds
+-->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -505,42 +545,204 @@
             object-fit: cover;
         }
         
-        @media (max-width: 768px) {
-            .grid-cols-3 {
-                grid-template-columns: repeat(2, 1fr);
+        /* Mobile Responsive Design */
+        @media (max-width: 1024px) {
+            .landing-section {
+                padding: 1rem;
+                padding-bottom: 6rem;
+            }
+            
+            .landing-section h1 {
+                font-size: 2.5rem;
+                line-height: 1.2;
+            }
+            
+            .landing-section p {
+                font-size: 1rem;
             }
             
             .landing-btn {
-                padding: 1rem 2rem;
-                font-size: 1.2rem;
+                padding: 1.2rem 2.5rem;
+                font-size: 1.3rem;
+                min-width: 200px;
             }
             
-            .stat-circle {
-                width: 70px;
-                height: 70px;
+            .id-card-modal {
+                max-width: 90vw;
+                margin: 1rem;
+                padding: 1.5rem;
+            }
+            
+            .hunter-card {
+                margin-bottom: 1rem;
             }
             
             .hunter-header {
                 padding: 1rem;
             }
             
-            .id-card-modal {
-                max-width: 350px;
+            .hunter-header h2 {
+                font-size: 1.1rem;
+            }
+            
+            .stat-circle {
+                width: 65px;
+                height: 65px;
+            }
+            
+            .stat-circle .text-2xl {
+                font-size: 1.1rem;
+            }
+            
+            .stat-circle .text-xs {
+                font-size: 0.7rem;
+            }
+            
+            #user-avatar {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .quest-item {
+                padding: 0.75rem;
+            }
+            
+            .quest-item .flex {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .quest-item .flex > div:first-child {
+                order: 1;
+            }
+            
+            .quest-item .flex > div:last-child {
+                order: 2;
+                align-self: flex-end;
+            }
+            
+            .exercise-card {
+                padding: 0.75rem;
+            }
+            
+            .exercise-card .flex {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .power-item {
+                padding: 0.75rem;
+            }
+            
+            .power-item .flex {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .power-item .flex > div:first-child {
+                order: 1;
+            }
+            
+            .power-item .flex > div:last-child {
+                order: 2;
+                align-self: flex-end;
+            }
+            
+            .modal-content {
+                max-height: 90vh;
+                overflow-y: auto;
+            }
+            
+            .id-card-field {
+                padding: 0.75rem;
             }
             
             .avatar-grid {
                 grid-template-columns: repeat(2, 1fr);
+                gap: 0.75rem;
+            }
+            
+            .avatar-option {
+                height: 70px;
+            }
+            
+            /* Clock widget mobile optimization */
+            #digital-clock-widget {
+                margin-left: 0.5rem;
+                min-width: 100px;
+            }
+            
+            #digital-clock-widget > div:first-child {
+                font-size: 0.9rem;
+                padding: 0.1rem 0.5rem;
+            }
+            
+            #digital-clock-widget > div:last-child {
+                font-size: 0.7rem;
+                padding: 0.05rem 0.4rem;
+            }
+            
+            /* Header mobile optimization */
+            header h1 {
+                font-size: 2rem;
+                line-height: 1.1;
+            }
+            
+            header p {
+                font-size: 0.9rem;
+            }
+            
+            /* Footer mobile optimization */
+            #main-footer {
+                padding: 1rem;
+            }
+            
+            #main-footer .max-w-6xl {
+                padding: 0;
+            }
+            
+            #main-footer .flex-col {
+                gap: 0.5rem;
+            }
+            
+            #main-footer .text-sm {
+                font-size: 0.75rem;
+            }
+            
+            /* Button mobile optimization */
+            .btn-hunter, .btn-accent {
+                padding: 0.75rem 1.5rem;
+                font-size: 0.9rem;
+            }
+            
+            /* Input mobile optimization */
+            input, select, textarea {
+                font-size: 16px; /* Prevents zoom on iOS */
+            }
+            
+            /* Modal mobile optimization */
+            .modal-overlay {
+                padding: 0.5rem;
+            }
+            
+            .hunter-card {
+                border-radius: 12px;
+            }
+            
+            .hunter-header {
+                border-radius: 12px 12px 0 0;
             }
         }
         
-        @media (max-width: 480px) {
-            .grid-cols-3 {
-                grid-template-columns: 1fr;
+        @media (max-width: 768px) {
+            .landing-section h1 {
+                font-size: 2rem;
             }
             
             .landing-btn {
-                padding: 0.8rem 1.5rem;
-                font-size: 1rem;
+                padding: 1rem 2rem;
+                font-size: 1.1rem;
+                min-width: 180px;
             }
             
             .stat-circle {
@@ -548,12 +750,447 @@
                 height: 60px;
             }
             
+            .stat-circle .text-2xl {
+                font-size: 1rem;
+            }
+            
+            .stat-circle .text-xs {
+                font-size: 0.6rem;
+            }
+            
+            #user-avatar {
+                width: 80px;
+                height: 80px;
+            }
+            
+            .hunter-header h2 {
+                font-size: 1rem;
+            }
+            
+            .quest-item {
+                padding: 0.5rem;
+            }
+            
+            .exercise-card {
+                padding: 0.5rem;
+            }
+            
+            .power-item {
+                padding: 0.5rem;
+            }
+            
             .id-card-modal {
-                max-width: 300px;
+                max-width: 95vw;
+                margin: 0.5rem;
+                padding: 1rem;
+            }
+            
+            .avatar-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.5rem;
+            }
+            
+            .avatar-option {
+                height: 60px;
+            }
+            
+            /* Clock widget smaller */
+            #digital-clock-widget {
+                min-width: 80px;
+            }
+            
+            #digital-clock-widget > div:first-child {
+                font-size: 0.8rem;
+                padding: 0.05rem 0.4rem;
+            }
+            
+            #digital-clock-widget > div:last-child {
+                font-size: 0.6rem;
+                padding: 0.02rem 0.3rem;
+            }
+            
+            /* Header smaller */
+            header h1 {
+                font-size: 1.5rem;
+            }
+            
+            header p {
+                font-size: 0.8rem;
+            }
+            
+            /* Footer smaller */
+            #main-footer {
+                padding: 0.75rem;
+            }
+            
+            #main-footer .text-sm {
+                font-size: 0.7rem;
+            }
+            
+            /* Buttons smaller */
+            .btn-hunter, .btn-accent {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.8rem;
+            }
+            
+            /* Fixed positioning adjustments */
+            #signOutBtn {
+                top: 0.5rem;
+                left: 0.5rem;
+                padding: 0.4rem 0.8rem;
+                font-size: 0.7rem;
+            }
+            
+            .fixed.top-4.left-32 {
+                top: 0.5rem;
+                left: 5rem;
+            }
+            
+            #videoVolumeBtn {
+                bottom: 0.5rem;
+                left: 0.5rem;
+                padding: 0.4rem 0.8rem;
+                font-size: 0.7rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .landing-section {
+                padding: 0.5rem;
+                padding-bottom: 5rem;
+            }
+            
+            .landing-section h1 {
+                font-size: 1.5rem;
+                margin-bottom: 1rem;
+            }
+            
+            .landing-section p {
+                font-size: 0.8rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .landing-btn {
+                padding: 0.8rem 1.5rem;
+                font-size: 1rem;
+                min-width: 150px;
+                margin: 0.25rem;
+            }
+            
+            .stat-circle {
+                width: 50px;
+                height: 50px;
+            }
+            
+            .stat-circle .text-2xl {
+                font-size: 0.9rem;
+            }
+            
+            .stat-circle .text-xs {
+                font-size: 0.5rem;
+            }
+            
+            #user-avatar {
+                width: 70px;
+                height: 70px;
+            }
+            
+            .hunter-header h2 {
+                font-size: 0.9rem;
+            }
+            
+            .quest-item {
+                padding: 0.4rem;
+            }
+            
+            .exercise-card {
+                padding: 0.4rem;
+            }
+            
+            .power-item {
+                padding: 0.4rem;
+            }
+            
+            .id-card-modal {
+                max-width: 98vw;
+                margin: 0.25rem;
+                padding: 0.75rem;
             }
             
             .avatar-grid {
                 grid-template-columns: 1fr;
+                gap: 0.4rem;
+            }
+            
+            .avatar-option {
+                height: 50px;
+            }
+            
+            /* Clock widget very small */
+            #digital-clock-widget {
+                min-width: 70px;
+                margin-left: 0.25rem;
+            }
+            
+            #digital-clock-widget > div:first-child {
+                font-size: 0.7rem;
+                padding: 0.02rem 0.3rem;
+            }
+            
+            #digital-clock-widget > div:last-child {
+                font-size: 0.5rem;
+                padding: 0.01rem 0.2rem;
+            }
+            
+            /* Header very small */
+            header h1 {
+                font-size: 1.2rem;
+            }
+            
+            header p {
+                font-size: 0.7rem;
+            }
+            
+            /* Footer very small */
+            #main-footer {
+                padding: 0.5rem;
+            }
+            
+            #main-footer .text-sm {
+                font-size: 0.6rem;
+            }
+            
+            /* Buttons very small */
+            .btn-hunter, .btn-accent {
+                padding: 0.5rem 1rem;
+                font-size: 0.7rem;
+            }
+            
+            /* Fixed positioning very small */
+            #signOutBtn {
+                top: 0.25rem;
+                left: 0.25rem;
+                padding: 0.3rem 0.6rem;
+                font-size: 0.6rem;
+            }
+            
+            .fixed.top-4.left-32 {
+                top: 0.25rem;
+                left: 4rem;
+            }
+            
+            #videoVolumeBtn {
+                bottom: 0.25rem;
+                left: 0.25rem;
+                padding: 0.3rem 0.6rem;
+                font-size: 0.6rem;
+            }
+            
+            /* Grid adjustments for very small screens */
+            .grid-cols-1.md\:grid-cols-2.lg\:grid-cols-3 {
+                grid-template-columns: 1fr;
+            }
+            
+            .grid-cols-1.lg\:grid-cols-4 {
+                grid-template-columns: 1fr;
+            }
+            
+            /* Modal adjustments */
+            .modal-content {
+                max-height: 95vh;
+            }
+            
+            /* Text size adjustments */
+            .text-xl {
+                font-size: 1rem;
+            }
+            
+            .text-lg {
+                font-size: 0.9rem;
+            }
+            
+            .text-sm {
+                font-size: 0.8rem;
+            }
+            
+            .text-xs {
+                font-size: 0.7rem;
+            }
+            
+            /* Spacing adjustments */
+            .space-y-6 > * + * {
+                margin-top: 1rem;
+            }
+            
+            .space-y-4 > * + * {
+                margin-top: 0.75rem;
+            }
+            
+            .gap-6 {
+                gap: 1rem;
+            }
+            
+            .gap-4 {
+                gap: 0.75rem;
+            }
+            
+            .gap-3 {
+                gap: 0.5rem;
+            }
+            
+            /* Padding adjustments */
+            .p-6 {
+                padding: 0.75rem;
+            }
+            
+            .p-4 {
+                padding: 0.5rem;
+            }
+            
+            .px-4 {
+                padding-left: 0.5rem;
+                padding-right: 0.5rem;
+            }
+            
+            .py-2 {
+                padding-top: 0.25rem;
+                padding-bottom: 0.25rem;
+            }
+            
+            /* Margin adjustments */
+            .mb-8 {
+                margin-bottom: 1rem;
+            }
+            
+            .mb-6 {
+                margin-bottom: 0.75rem;
+            }
+            
+            .mb-4 {
+                margin-bottom: 0.5rem;
+            }
+            
+            .mt-8 {
+                margin-top: 1rem;
+            }
+            
+            .mt-6 {
+                margin-top: 0.75rem;
+            }
+            
+            .mt-4 {
+                margin-top: 0.5rem;
+            }
+        }
+        
+        /* Landscape orientation adjustments */
+        @media (max-width: 768px) and (orientation: landscape) {
+            .landing-section {
+                padding: 0.5rem;
+                padding-bottom: 3rem;
+            }
+            
+            .landing-section h1 {
+                font-size: 1.8rem;
+            }
+            
+            .landing-btn {
+                padding: 0.6rem 1.5rem;
+                font-size: 0.9rem;
+            }
+            
+            #user-avatar {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .stat-circle {
+                width: 45px;
+                height: 45px;
+            }
+            
+            .stat-circle .text-2xl {
+                font-size: 0.8rem;
+            }
+            
+            .stat-circle .text-xs {
+                font-size: 0.4rem;
+            }
+            
+            header h1 {
+                font-size: 1.3rem;
+            }
+            
+            header p {
+                font-size: 0.7rem;
+            }
+            
+            .hunter-header h2 {
+                font-size: 0.8rem;
+            }
+            
+            .quest-item, .exercise-card, .power-item {
+                padding: 0.3rem;
+            }
+            
+            .btn-hunter, .btn-accent {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.7rem;
+            }
+            
+            #main-footer {
+                padding: 0.3rem;
+            }
+            
+            #main-footer .text-sm {
+                font-size: 0.5rem;
+            }
+        }
+        
+        /* High DPI screens */
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+            .hunter-card {
+                border-width: 0.5px;
+            }
+            
+            .btn-hunter, .btn-accent {
+                border-width: 0.5px;
+            }
+        }
+        
+        /* Touch device optimizations */
+        @media (hover: none) and (pointer: coarse) {
+            .btn-hunter:hover, .btn-accent:hover {
+                transform: none;
+            }
+            
+            .hunter-card:hover {
+                transform: none;
+            }
+            
+            .exercise-card:hover {
+                transform: none;
+            }
+            
+            .quest-item:hover {
+                transform: none;
+            }
+            
+            .stat-circle:hover {
+                transform: none;
+            }
+            
+            /* Increase touch targets */
+            .btn-hunter, .btn-accent {
+                min-height: 44px;
+            }
+            
+            input, select, textarea {
+                min-height: 44px;
+            }
+            
+            .avatar-option {
+                min-height: 44px;
             }
         }
         
@@ -596,12 +1233,13 @@
     <!-- System Status Indicator -->
     <div class="fixed top-4 left-32 flex items-center space-x-2">
         <div class="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-        <span class="text-green-400 text-sm font-bold hunter-font">SYSTEM ONLINE</span>
+        <span class="text-green-400 text-sm font-bold hunter-font hidden sm:inline">SYSTEM ONLINE</span>
+        <span class="text-green-400 text-xs font-bold hunter-font sm:hidden">ONLINE</span>
     </div>
     
     <!-- Video Volume Control -->
     <button id="videoVolumeBtn" class="fixed bottom-4 left-4 bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded-lg text-sm font-bold transition-colors z-50">
-        <i class="fas fa-volume-up mr-1"></i> Audio
+        <i class="fas fa-volume-up mr-1"></i> <span class="hidden sm:inline">Audio</span>
     </button>
     
     <!-- Customization Modal (ID Card Style) -->
@@ -926,15 +1564,17 @@
                     <div class="hunter-card fade-in mb-8">
                         <div class="hunter-header flex justify-between items-center">
                             <h2 class="text-xl font-bold"><i class="fas fa-scroll mr-2"></i> DAILY QUESTS</h2>
-                            <div class="flex items-center gap-3">
-                                <span class="bg-green-600/50 px-3 py-1 rounded-full text-sm font-bold mr-2 streak-glow" id="streak-counter">
-                                    🔥 Day <span id="streak-days">1</span> Streak <i class="fas fa-fire ms-1 text-yellow-300"></i>
-                                </span>
-                                <button id="reset-daily" class="bg-gray-700 hover:bg-gray-600 px-3 py-1 rounded-full text-sm">
-                                    <i class="fas fa-sync-alt"></i> Reset
-                                </button>
+                            <div class="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3">
+                                <div class="flex items-center gap-2">
+                                    <span class="bg-green-600/50 px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-bold streak-glow" id="streak-counter">
+                                        🔥 Day <span id="streak-days">1</span> <span class="hidden sm:inline">Streak</span> <i class="fas fa-fire ms-1 text-yellow-300"></i>
+                                    </span>
+                                    <button id="reset-daily" class="bg-gray-700 hover:bg-gray-600 px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm">
+                                        <i class="fas fa-sync-alt"></i> <span class="hidden sm:inline">Reset</span>
+                                    </button>
+                                </div>
                                 <!-- Modern Clock Widget -->
-                                <div id="digital-clock-widget" style="margin-left: 1.5rem; min-width: 120px;">
+                                <div id="digital-clock-widget" class="mt-2 sm:mt-0 sm:ml-4" style="min-width: 120px;">
                                     <div style="font-family: 'Orbitron', monospace; font-size: 1.1rem; background: #18181b; color: #00ff9d; border-radius: 8px; box-shadow: 0 0 8px #00ff9d44; padding: 0.2rem 1rem; letter-spacing: 0.1em; border: 1.5px solid #00ff9d; text-align: right;">
                                         <span id="digital-clock">00:00:00</span>
                                     </div>
@@ -975,15 +1615,15 @@
                             <h2 class="text-xl font-bold"><i class="fas fa-tasks mr-2"></i> SHADOW COMMAND CENTER</h2>
                         </div>
                         <div class="p-6">
-                            <div class="flex mb-4">
+                            <div class="flex flex-col sm:flex-row mb-4 gap-2 sm:gap-0">
                                 <input
                                     type="text"
                                     id="mission-input"
-                                    class="flex-1 bg-gray-800 border border-gray-700 rounded-l-lg px-4 py-2 focus:border-purple-500 focus:outline-none"
+                                    class="flex-1 bg-gray-800 border border-gray-700 rounded-lg sm:rounded-l-lg sm:rounded-r-none px-4 py-2 focus:border-purple-500 focus:outline-none"
                                     placeholder="Issue new shadow command..."
                                 />
-                                <button id="add-mission" class="btn-hunter px-4 py-2 rounded-r-lg">
-                                    <i class="fas fa-plus"></i> Add
+                                <button id="add-mission" class="btn-hunter px-4 py-2 rounded-lg sm:rounded-l-none sm:rounded-r-lg">
+                                    <i class="fas fa-plus"></i> <span class="hidden sm:inline">Add</span>
                                 </button>
                             </div>
                             <div class="space-y-2" id="mission-list"></div>
@@ -1135,32 +1775,32 @@
     <footer id="main-footer" class="fixed bottom-0 left-0 right-0 bg-black/90 backdrop-blur-sm shadow-2xl z-40 rgb-border">
         <div class="max-w-6xl mx-auto px-6 py-5">
             <!-- Top Row - Copyright and Social Links -->
-            <div class="flex flex-col md:flex-row justify-between items-center space-y-3 md:space-y-0 mb-3">
+            <div class="flex flex-col md:flex-row justify-between items-center space-y-2 md:space-y-0 mb-2 md:mb-3">
                 <!-- Copyright -->
-                <div class="text-white/80 text-sm">
+                <div class="text-white/80 text-xs md:text-sm text-center md:text-left">
                     <span class="font-bold">© 2024 Shadow Monarch's Training System</span>
-                    <span class="mx-2">•</span>
-                    <span>All rights reserved</span>
+                    <span class="hidden md:inline mx-2">•</span>
+                    <span class="hidden md:inline">All rights reserved</span>
                 </div>
                 
                 <!-- Social Links -->
-                <div class="flex items-center space-x-5">
+                <div class="flex items-center justify-center md:justify-start space-x-4 md:space-x-5">
                     <a href="https://www.linkedin.com/in/usman-shariff0514/" target="_blank" class="text-white/80 hover:text-blue-300 transition-colors duration-300 group" title="LinkedIn">
-                        <i class="fab fa-linkedin text-xl group-hover:scale-110 transition-transform duration-300"></i>
+                        <i class="fab fa-linkedin text-lg md:text-xl group-hover:scale-110 transition-transform duration-300"></i>
                     </a>
                     <a href="https://github.com/Usmansha05/" target="_blank" class="text-white/80 hover:text-gray-300 transition-colors duration-300 group" title="GitHub">
-                        <i class="fab fa-github text-xl group-hover:scale-110 transition-transform duration-300"></i>
+                        <i class="fab fa-github text-lg md:text-xl group-hover:scale-110 transition-transform duration-300"></i>
                     </a>
                     <a href="mailto:usmanshariff200205@gmail.com" class="text-white/80 hover:text-red-300 transition-colors duration-300 group" title="Email">
-                        <i class="fas fa-envelope text-xl group-hover:scale-110 transition-transform duration-300"></i>
+                        <i class="fas fa-envelope text-lg md:text-xl group-hover:scale-110 transition-transform duration-300"></i>
                     </a>
                 </div>
             </div>
             
             <!-- Bottom Row - Credits and Developer Info -->
-            <div class="flex flex-col md:flex-row justify-between items-center space-y-2 md:space-y-0">
+            <div class="flex flex-col md:flex-row justify-between items-center space-y-1 md:space-y-0">
                 <!-- Credits -->
-                <div class="text-white/70 text-sm">
+                <div class="text-white/70 text-xs md:text-sm text-center md:text-left">
                     <span>Inspired by</span>
                     <a href="https://en.wikipedia.org/wiki/Solo_Leveling" target="_blank" class="text-purple-300 hover:text-purple-200 mx-1 font-semibold">Solo Leveling</a>
                     <span>by</span>
@@ -1168,13 +1808,13 @@
                 </div>
                 
                 <!-- Developer Info -->
-                <div class="text-white/70 text-sm">
+                <div class="text-white/70 text-xs md:text-sm text-center md:text-left">
                     <span>Developed by</span>
                     <a href="https://www.linkedin.com/in/usman-shariff0514/" target="_blank" class="text-blue-300 hover:text-blue-200 mx-1 font-bold">Shariff Usman</a>
-                    <span class="mx-2">•</span>
-                    <span>Made with</span>
+                    <span class="hidden md:inline mx-2">•</span>
+                    <span class="hidden md:inline">Made with</span>
                     <span class="text-red-400 mx-1">❤️</span>
-                    <span>and lots of</span>
+                    <span class="hidden md:inline">and lots of</span>
                     <span class="text-yellow-400 mx-1">☕</span>
                 </div>
             </div>
@@ -1352,7 +1992,7 @@
         const videoVolumeBtn = document.getElementById('videoVolumeBtn');
 
         
-        let missions = JSON.parse(localStorage.getItem('shadowMissions') || '[]');
+        let missions = [];
         let selectedAvatar = "1";
         let customAvatar = null;
         let customBgVideo = null;
@@ -1440,15 +2080,7 @@
         function init() {
             try {
                 loadState();
-                checkDailyReset();
-                renderQuests();
-                renderExercisePreview();
-                renderExerciseLibrary();
-                updateStatsDisplay();
-                updatePowersDisplay();
                 setupEventListeners();
-                renderMissions();
-                updateUserDisplay();
                 
                 // Test video file
                 const video = document.getElementById('bg-video');
@@ -1507,19 +2139,16 @@
         // Load state from localStorage
         function loadState() {
             try {
-                const savedState = localStorage.getItem('hunterTrainingState');
-                if (savedState) {
-                    const parsedState = JSON.parse(savedState);
-                    Object.assign(state, parsedState);
-                    
-                    if (!parsedState.user) {
-                        state.user = {
-                            name: "Hunter",
-                            avatar: "https://i.imgur.com/Jz5ZQYt.jpg",
-                            bgVideo: "1"
-                        };
-                    }
-                } else {
+                // Reset state to default for landing page
+                state.userId = null;
+                state.user = {
+                    name: "Hunter",
+                    avatar: "https://i.imgur.com/Jz5ZQYt.jpg",
+                    bgVideo: "1"
+                };
+                
+                // Load quests if they don't exist
+                if (!state.quests || state.quests.length === 0) {
                     state.quests = defaultQuests.map((q, i) => ({
                         id: i + 1,
                         type: q.type,
@@ -1529,30 +2158,13 @@
                         power: q.power,
                         completed: false
                     }));
-                    saveState();
-                }
-                
-                const userCustomization = localStorage.getItem('hunterCustomization');
-                if (userCustomization) {
-                    const customization = JSON.parse(userCustomization);
-                    state.user.name = customization.name || "Hunter";
-                    state.user.avatar = customization.avatar || "https://i.imgur.com/Jz5ZQYt.jpg";
-                    state.user.bgVideo = customization.bgVideo || "1";
-                    customAvatar = customization.customAvatar || null;
-                    customBgVideo = customization.customBgVideo || null;
                 }
                 
                 // Use bgv.mp4 for landing page video background
                 bgVideoElement.src = "bgv.mp4";
                 console.log('Video source set to:', bgVideoElement.src);
                 
-                // Set training system background image
-                updateTrainingSystemBackground();
-                
-                // Ensure video plays
-                ensureVideoPlays();
-                
-                console.log('State loaded:', state);
+                console.log('State loaded for landing page');
             } catch (err) {
                 console.error('Error loading state:', err);
             }
@@ -1561,19 +2173,48 @@
         // Save state to localStorage
         function saveState() {
             try {
+                // Validate state before saving
+                if (!state || typeof state !== 'object') {
+                    throw new Error('Invalid state object');
+                }
+                
                 // Generate unique ID for new users
                 if (!state.userId) {
                     state.userId = 'hunterTrainingState_' + Date.now();
                 }
-                localStorage.setItem(state.userId, JSON.stringify(state));
+                
+                // Ensure user object exists
+                if (!state.user) {
+                    state.user = {
+                        name: "Hunter",
+                        avatar: "https://i.imgur.com/Jz5ZQYt.jpg",
+                        bgVideo: "1"
+                    };
+                }
+                
+                // Validate required fields
+                const requiredFields = ['level', 'xp', 'maxXp', 'stats', 'powers', 'streak', 'quests'];
+                for (const field of requiredFields) {
+                    if (!(field in state)) {
+                        console.warn(`Missing required field: ${field}`);
+                    }
+                }
+                
+                const stateJson = JSON.stringify(state);
+                if (!stateJson) {
+                    throw new Error('Failed to stringify state');
+                }
+                
+                localStorage.setItem(state.userId, stateJson);
                 
                 // Also save to main state for backward compatibility
-                localStorage.setItem('hunterTrainingState', JSON.stringify(state));
+                localStorage.setItem('hunterTrainingState', stateJson);
                 
                 console.log('State saved with ID:', state.userId);
                 console.log('User name saved:', state.user.name);
             } catch (err) {
                 console.error('Error saving state:', err);
+                showSystemMessage("Error saving progress. Please try again.", 3000, 'warning');
             }
         }
         
@@ -1599,6 +2240,91 @@
                 console.log('=== END DEBUG ===');
             } catch (err) {
                 console.error('Error debugging localStorage:', err);
+            }
+        }
+        
+        // Validate and repair user data
+        function validateAndRepairUserData(userData) {
+            try {
+                if (!userData || typeof userData !== 'object') {
+                    return null;
+                }
+                
+                // Ensure all required fields exist
+                const defaultData = {
+                    level: 1,
+                    xp: 0,
+                    maxXp: 100,
+                    stats: { str: 1, agi: 1, end: 1 },
+                    powers: {
+                        extraction: { level: 0, xp: 0, maxXp: 50 },
+                        speed: { level: 0, xp: 0, maxXp: 50 },
+                        domain: { level: 0, xp: 0, maxXp: 50 },
+                        authority: { level: 0, xp: 0, maxXp: 50 }
+                    },
+                    streak: 1,
+                    lastActiveDate: new Date().toDateString(),
+                    quests: defaultQuests.map((q, i) => ({
+                        id: i + 1,
+                        type: q.type,
+                        name: q.name,
+                        description: q.description,
+                        xp: q.xp,
+                        power: q.power,
+                        completed: false
+                    })),
+                    user: {
+                        name: "Hunter",
+                        avatar: "https://i.imgur.com/Jz5ZQYt.jpg",
+                        bgVideo: "1"
+                    }
+                };
+                
+                // Merge with defaults for missing fields
+                const repairedData = { ...defaultData, ...userData };
+                
+                // Validate numeric fields
+                if (typeof repairedData.level !== 'number' || repairedData.level < 1) {
+                    repairedData.level = 1;
+                }
+                if (typeof repairedData.xp !== 'number' || repairedData.xp < 0) {
+                    repairedData.xp = 0;
+                }
+                if (typeof repairedData.maxXp !== 'number' || repairedData.maxXp < 100) {
+                    repairedData.maxXp = 100;
+                }
+                if (typeof repairedData.streak !== 'number' || repairedData.streak < 1) {
+                    repairedData.streak = 1;
+                }
+                
+                // Validate stats
+                if (!repairedData.stats || typeof repairedData.stats !== 'object') {
+                    repairedData.stats = { str: 1, agi: 1, end: 1 };
+                }
+                
+                // Validate powers
+                if (!repairedData.powers || typeof repairedData.powers !== 'object') {
+                    repairedData.powers = {
+                        extraction: { level: 0, xp: 0, maxXp: 50 },
+                        speed: { level: 0, xp: 0, maxXp: 50 },
+                        domain: { level: 0, xp: 0, maxXp: 50 },
+                        authority: { level: 0, xp: 0, maxXp: 50 }
+                    };
+                }
+                
+                // Validate user object
+                if (!repairedData.user || typeof repairedData.user !== 'object') {
+                    repairedData.user = {
+                        name: "Hunter",
+                        avatar: "https://i.imgur.com/Jz5ZQYt.jpg",
+                        bgVideo: "1"
+                    };
+                }
+                
+                return repairedData;
+            } catch (err) {
+                console.error('Error validating user data:', err);
+                return null;
             }
         }
 
@@ -1884,7 +2610,11 @@
                     
                     // Clear missions
                     missions = [];
-                    localStorage.removeItem('shadowMissions');
+                    if (state.userId) {
+                        localStorage.removeItem(`shadowMissions_${state.userId}`);
+                    } else {
+                        localStorage.removeItem('shadowMissions');
+                    }
                     
                     saveState();
                     saveMissions();
@@ -1907,23 +2637,27 @@
                 customizationModal.classList.add('hidden');
                 document.body.style.overflow = 'auto';
                 
-                // If no user data exists, show landing page
-                const hasUserData = localStorage.getItem('hunterTrainingState');
-                if (!hasUserData) {
-                    landingPage.classList.remove('hidden');
-                    const video = document.getElementById('bg-video');
-                    if (video) {
-                        video.style.display = 'block';
-                        video.style.visibility = 'visible';
-                        video.style.opacity = '1';
-                        video.style.zIndex = '-2';
-                        
-                        // Ensure video plays
-                        setTimeout(() => {
-                            ensureVideoPlays();
-                        }, 100);
-                    }
+                // Always return to landing page when closing modal
+                landingPage.classList.remove('hidden');
+                trainingSystem.classList.add('hidden');
+                const video = document.getElementById('bg-video');
+                if (video) {
+                    video.style.display = 'block';
+                    video.style.visibility = 'visible';
+                    video.style.opacity = '1';
+                    video.style.zIndex = '-2';
+                    
+                    // Ensure video plays
+                    setTimeout(() => {
+                        ensureVideoPlays();
+                    }, 100);
                 }
+                
+                // Hide sign out button
+                signOutBtn.classList.add('hidden');
+                
+                // Update footer visibility
+                updateFooterVisibility();
                 
                 console.log('Customization modal closed successfully');
             } catch (err) {
@@ -1943,20 +2677,35 @@
                 keys.forEach(key => {
                     if (key.startsWith('hunterTrainingState_')) {
                         try {
-                            const userData = JSON.parse(localStorage.getItem(key));
+                            const userDataStr = localStorage.getItem(key);
+                            if (!userDataStr) return;
+                            
+                            const userData = JSON.parse(userDataStr);
                             if (userData && userData.user && userData.user.name && 
                                 userData.user.name !== 'Hunter' && userData.user.name !== '') {
-                                users.push({
-                                    id: key,
-                                    name: userData.user.name,
-                                    avatar: userData.user.avatar,
-                                    level: userData.level || 1,
-                                    rank: getRankFromLevel(userData.level || 1)
-                                });
-                                console.log('Found user with ID:', key, userData.user.name);
+                                
+                                // Validate user data before adding
+                                const validatedData = validateAndRepairUserData(userData);
+                                if (validatedData) {
+                                    users.push({
+                                        id: key,
+                                        name: validatedData.user.name,
+                                        avatar: validatedData.user.avatar,
+                                        level: validatedData.level || 1,
+                                        rank: getRankFromLevel(validatedData.level || 1)
+                                    });
+                                    console.log('Found user with ID:', key, validatedData.user.name);
+                                }
                             }
                         } catch (err) {
                             console.error('Error parsing user data for key:', key, err);
+                            // Try to clean up corrupted data
+                            try {
+                                localStorage.removeItem(key);
+                                console.log('Removed corrupted user data for key:', key);
+                            } catch (cleanupErr) {
+                                console.error('Error cleaning up corrupted data:', cleanupErr);
+                            }
                         }
                     }
                 });
@@ -1968,39 +2717,61 @@
                         const userData = JSON.parse(mainUserData);
                         if (userData && userData.user && userData.user.name && 
                             userData.user.name !== 'Hunter' && userData.user.name !== '') {
-                            users.push({
-                                id: 'hunterTrainingState',
-                                name: userData.user.name,
-                                avatar: userData.user.avatar,
-                                level: userData.level || 1,
-                                rank: getRankFromLevel(userData.level || 1)
-                            });
-                            console.log('Found main user:', userData.user.name);
+                            
+                            // Validate user data before adding
+                            const validatedData = validateAndRepairUserData(userData);
+                            if (validatedData) {
+                                users.push({
+                                    id: 'hunterTrainingState',
+                                    name: validatedData.user.name,
+                                    avatar: validatedData.user.avatar,
+                                    level: validatedData.level || 1,
+                                    rank: getRankFromLevel(validatedData.level || 1)
+                                });
+                                console.log('Found main user:', validatedData.user.name);
+                            }
                         }
                     } catch (err) {
                         console.error('Error parsing main user data:', err);
+                        // Try to clean up corrupted data
+                        try {
+                            localStorage.removeItem('hunterTrainingState');
+                            console.log('Removed corrupted main user data');
+                        } catch (cleanupErr) {
+                            console.error('Error cleaning up corrupted main data:', cleanupErr);
+                        }
                     }
                 }
                 
                 // Check for any other potential user data
                 keys.forEach(key => {
-                    if (key.includes('hunter') || key.includes('user') || key.includes('state')) {
+                    if ((key.includes('hunter') || key.includes('user') || key.includes('state')) && 
+                        !key.startsWith('hunterTrainingState_') && key !== 'hunterTrainingState') {
                         try {
-                            const userData = JSON.parse(localStorage.getItem(key));
+                            const userDataStr = localStorage.getItem(key);
+                            if (!userDataStr) return;
+                            
+                            const userData = JSON.parse(userDataStr);
                             if (userData && userData.user && userData.user.name && 
                                 userData.user.name !== 'Hunter' && userData.user.name !== '' &&
                                 !users.some(u => u.name === userData.user.name)) {
-                                users.push({
-                                    id: key,
-                                    name: userData.user.name,
-                                    avatar: userData.user.avatar,
-                                    level: userData.level || 1,
-                                    rank: getRankFromLevel(userData.level || 1)
-                                });
-                                console.log('Found additional user with ID:', key, userData.user.name);
+                                
+                                // Validate user data before adding
+                                const validatedData = validateAndRepairUserData(userData);
+                                if (validatedData) {
+                                    users.push({
+                                        id: key,
+                                        name: validatedData.user.name,
+                                        avatar: validatedData.user.avatar,
+                                        level: validatedData.level || 1,
+                                        rank: getRankFromLevel(validatedData.level || 1)
+                                    });
+                                    console.log('Found additional user with ID:', key, validatedData.user.name);
+                                }
                             }
                         } catch (err) {
                             // Ignore parsing errors for non-user data
+                            console.debug('Non-user data found in localStorage:', key);
                         }
                     }
                 });
@@ -2089,55 +2860,89 @@
         function loadUserData(userId) {
             try {
                 console.log('Loading user data for ID:', userId);
-                const userData = localStorage.getItem(userId);
-                if (userData) {
-                    const parsedData = JSON.parse(userData);
-                    Object.assign(state, parsedData);
-                    
-                    // Ensure user data exists
-                    if (!state.user) {
-                        state.user = {
-                            name: "Hunter",
-                            avatar: "https://i.imgur.com/Jz5ZQYt.jpg",
-                            bgVideo: "1"
-                        };
-                    }
-                    
-                    // Update display
-                    updateUserDisplay();
-                    updateStatsDisplay();
-                    updatePowersDisplay();
-                    renderQuests();
-                    renderMissions();
-                    updateTrainingSystemBackground();
-                    
-                    // Show training system
-                    landingPage.classList.add('hidden');
-                    trainingSystem.classList.remove('hidden');
-                    userSelectionModal.classList.add('hidden');
-                    document.body.style.overflow = 'auto';
-                    
-                    // Hide video and show sign out button
-                    const video = document.getElementById('bg-video');
-                    if (video) {
-                        video.style.display = 'none';
-                        video.style.visibility = 'hidden';
-                        video.style.opacity = '0';
-                    }
-                    signOutBtn.classList.remove('hidden');
-                    
-                    // Update footer visibility
-                    updateFooterVisibility();
-                    
-                    showSystemMessage(`Welcome back, ${state.user.name}!`, 3000, 'success');
-                    console.log('User data loaded successfully:', state.user.name);
-                } else {
-                    console.error('No user data found for ID:', userId);
-                    showSystemMessage("Error: User data not found");
+                
+                if (!userId) {
+                    throw new Error('No user ID provided');
                 }
+                
+                const userData = localStorage.getItem(userId);
+                if (!userData) {
+                    throw new Error(`No user data found for ID: ${userId}`);
+                }
+                
+                let parsedData;
+                try {
+                    parsedData = JSON.parse(userData);
+                } catch (parseError) {
+                    throw new Error(`Invalid JSON data for user: ${parseError.message}`);
+                }
+                
+                if (!parsedData || typeof parsedData !== 'object') {
+                    throw new Error('Invalid user data structure');
+                }
+                
+                // Validate and repair user data
+                const validatedData = validateAndRepairUserData(parsedData);
+                if (!validatedData) {
+                    throw new Error('Failed to validate user data');
+                }
+                parsedData = validatedData;
+                
+                Object.assign(state, parsedData);
+                
+                // Load missions for this user
+                try {
+                    const userMissions = localStorage.getItem(`shadowMissions_${userId}`);
+                    if (userMissions) {
+                        missions = JSON.parse(userMissions);
+                        if (!Array.isArray(missions)) {
+                            missions = [];
+                        }
+                    } else {
+                        missions = [];
+                    }
+                } catch (missionError) {
+                    console.warn('Error loading missions:', missionError);
+                    missions = [];
+                }
+                
+                // Update display
+                updateUserDisplay();
+                updateStatsDisplay();
+                updatePowersDisplay();
+                renderQuests();
+                renderMissions();
+                updateTrainingSystemBackground();
+                
+                // Show training system
+                landingPage.classList.add('hidden');
+                trainingSystem.classList.remove('hidden');
+                userSelectionModal.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+                
+                // Hide video and show sign out button
+                const video = document.getElementById('bg-video');
+                if (video) {
+                    video.style.display = 'none';
+                    video.style.visibility = 'hidden';
+                    video.style.opacity = '0';
+                }
+                signOutBtn.classList.remove('hidden');
+                
+                // Update footer visibility
+                updateFooterVisibility();
+                
+                showSystemMessage(`Welcome back, ${state.user.name}!`, 3000, 'success');
+                console.log('User data loaded successfully:', state.user.name);
             } catch (err) {
                 console.error('Error loading user data:', err);
-                showSystemMessage("Error loading user data");
+                showSystemMessage(`Error loading user data: ${err.message}`, 4000, 'warning');
+                
+                // Return to landing page on error
+                landingPage.classList.remove('hidden');
+                trainingSystem.classList.add('hidden');
+                userSelectionModal.classList.add('hidden');
+                updateFooterVisibility();
             }
         }
         
@@ -2159,6 +2964,14 @@
                     signOutBtn.classList.add('hidden');
                     updateFooterVisibility();
                     showSystemMessage("Signed Out Successfully - Welcome Back", 3000, 'success');
+                    
+                    // Reset state to prevent conflicts
+                    state.userId = null;
+                    state.user = {
+                        name: "Hunter",
+                        avatar: "https://i.imgur.com/Jz5ZQYt.jpg",
+                        bgVideo: "1"
+                    };
                 }
             } catch (err) {
                 console.error('Error signing out:', err);
@@ -2527,10 +3340,27 @@
         // Save missions
         function saveMissions() {
             try {
-                localStorage.setItem('shadowMissions', JSON.stringify(missions));
-                console.log('Missions saved:', missions);
+                // Validate missions array
+                if (!Array.isArray(missions)) {
+                    console.warn('Missions is not an array, resetting to empty array');
+                    missions = [];
+                }
+                
+                const missionsJson = JSON.stringify(missions);
+                if (!missionsJson) {
+                    throw new Error('Failed to stringify missions');
+                }
+                
+                if (state.userId) {
+                    localStorage.setItem(`shadowMissions_${state.userId}`, missionsJson);
+                    console.log('Missions saved for user:', state.userId, missions);
+                } else {
+                    localStorage.setItem('shadowMissions', missionsJson);
+                    console.log('Missions saved to default location:', missions);
+                }
             } catch (err) {
                 console.error('Error saving missions:', err);
+                showSystemMessage("Error saving missions. Please try again.", 3000, 'warning');
             }
         }
 
@@ -2726,17 +3556,19 @@ function setupEventListeners() {
                 
                 state.user.name = name;
                 saveCustomization();
-                saveState(); // Also save to main state
+                
+                if (isNewRegistration) {
+                    // Generate unique ID for new user
+                    state.userId = 'hunterTrainingState_' + Date.now();
+                    console.log('New user ID generated:', state.userId);
+                }
+                
+                saveState(); // Save with proper ID
                 updateUserDisplay();
                 customizationModal.classList.add('hidden');
                 document.body.style.overflow = 'auto';
                 
                 if (isNewRegistration) {
-                    // Set userId to the latest key
-                    const users = getRegisteredUsers();
-                    if (users.length > 0) {
-                        state.userId = users[users.length - 1].id;
-                    }
                     landingPage.classList.add('hidden');
                     trainingSystem.classList.remove('hidden');
                     updateFooterVisibility();
@@ -3100,7 +3932,14 @@ function setupEventListeners() {
 }
 
         // Initialize the app on load
-        document.addEventListener('DOMContentLoaded', init);
+        document.addEventListener('DOMContentLoaded', () => {
+            try {
+                init();
+            } catch (err) {
+                console.error('Critical error during app initialization:', err);
+                showSystemMessage("Critical error during initialization. Please refresh the page.", 5000, 'warning');
+            }
+        });
         
 
         
@@ -3111,6 +3950,50 @@ function setupEventListeners() {
                 video.play().catch(e => console.warn('Video play on interaction failed:', e));
             }
         }, { once: true });
+        
+        // Data backup and recovery system
+        function backupUserData() {
+            try {
+                if (state.userId && state.user) {
+                    const backup = {
+                        timestamp: Date.now(),
+                        userId: state.userId,
+                        userData: JSON.stringify(state),
+                        missions: JSON.stringify(missions)
+                    };
+                    localStorage.setItem(`backup_${state.userId}`, JSON.stringify(backup));
+                    console.log('User data backed up successfully');
+                }
+            } catch (err) {
+                console.error('Error backing up user data:', err);
+            }
+        }
+        
+        function recoverUserData(userId) {
+            try {
+                const backupData = localStorage.getItem(`backup_${userId}`);
+                if (backupData) {
+                    const backup = JSON.parse(backupData);
+                    if (backup.userData) {
+                        const userData = JSON.parse(backup.userData);
+                        Object.assign(state, userData);
+                        console.log('User data recovered from backup');
+                        return true;
+                    }
+                }
+                return false;
+            } catch (err) {
+                console.error('Error recovering user data:', err);
+                return false;
+            }
+        }
+        
+        // Auto-backup every 5 minutes
+        setInterval(() => {
+            if (state.userId && !trainingSystem.classList.contains('hidden')) {
+                backupUserData();
+            }
+        }, 5 * 60 * 1000);
 
         // Digital Clock UI
         function updateDigitalClock() {
